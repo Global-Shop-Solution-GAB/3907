@@ -1,0 +1,724 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("WIP to Bin Operation Labels")
+gui.SS_Form1..size(6615,4935)
+gui.SS_Form1..minx(0)
+gui.SS_Form1..miny(0)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..event(unload,unload)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1.lbl_txtLblQty.create(label,"# of Labels",True,900,200,1,100,150,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txtLblQty.defaultvalue("")
+gui.SS_Form1.lbl_txtLblQty.controlgroup(0)
+gui.SS_Form1.txtLblQty.create(textbox,"",True,870,330,0,100,350,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtLblQty.defaultvalue("")
+gui.SS_Form1.txtLblQty.controlgroup(0)
+gui.SS_Form1.lbl_txtSeq.create(label,"Sequence",True,1455,200,1,100,835,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txtSeq.defaultvalue("")
+gui.SS_Form1.lbl_txtSeq.controlgroup(0)
+gui.SS_Form1.txtSeq.create(textbox,"",True,1530,330,0,100,1035,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtSeq.defaultvalue("")
+gui.SS_Form1.txtSeq.controlgroup(0)
+gui.SS_Form1.lbl_txtWC.create(label,"Workcenter",True,1800,200,1,1715,835,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txtWC.defaultvalue("")
+gui.SS_Form1.lbl_txtWC.controlgroup(0)
+gui.SS_Form1.txtWC.create(textbox,"",True,1665,330,0,1670,1035,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtWC.defaultvalue("")
+gui.SS_Form1.txtWC.controlgroup(0)
+gui.SS_Form1.lbl_txtDesc.create(label,"Description",True,2175,200,1,3405,835,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txtDesc.defaultvalue("")
+gui.SS_Form1.lbl_txtDesc.controlgroup(0)
+gui.SS_Form1.txtDesc.create(textbox,"",True,2820,330,0,3390,1035,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtDesc.defaultvalue("")
+gui.SS_Form1.txtDesc.controlgroup(0)
+gui.SS_Form1.lbl_lvw1.create(label,"Click a line to select a sequence",True,2895,200,1,100,1535,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_lvw1.defaultvalue("")
+gui.SS_Form1.lbl_lvw1.controlgroup(0)
+gui.SS_Form1.lvw1.create(listview)
+gui.SS_Form1.lvw1.view(3)
+gui.SS_Form1.lvw1.addlistviewcolumn("Sequence",1500,0)
+gui.SS_Form1.lvw1.addlistviewcolumn("Workcenter",2118,0)
+gui.SS_Form1.lvw1.addlistviewcolumn("Description",3000,0)
+gui.SS_Form1.lvw1.visible(True)
+gui.SS_Form1.lvw1.size(6155,2000)
+gui.SS_Form1.lvw1.zorder(0)
+gui.SS_Form1.lvw1.position(100,1735)
+gui.SS_Form1.lvw1.enabled(True)
+gui.SS_Form1.lvw1.fontname("Arial")
+gui.SS_Form1.lvw1.fontsize(8)
+gui.SS_Form1.lvw1.event(itemclick,lvw1_itemclick)
+gui.SS_Form1.cmd_Print.create(button)
+gui.SS_Form1.cmd_Print.caption("Print")
+gui.SS_Form1.cmd_Print.visible(True)
+gui.SS_Form1.cmd_Print.size(1000,330)
+gui.SS_Form1.cmd_Print.zorder(0)
+gui.SS_Form1.cmd_Print.position(100,3820)
+gui.SS_Form1.cmd_Print.enabled(True)
+gui.SS_Form1.cmd_Print.fontname("Arial")
+gui.SS_Form1.cmd_Print.fontsize(8)
+gui.SS_Form1.cmd_Print.event(click,cmdprnt_click)
+gui.SS_Form1.cmd_Print.SetInternationalID(171500)
+gui.SS_Form1.cmd_Print.defaultvalue("")
+gui.SS_Form1.cmd_Print.controlgroup(0)
+gui.SS_Form1.chkPrintCurrOp.create(checkbox)
+gui.SS_Form1.chkPrintCurrOp.caption("Print Remaining Qty in Bin?")
+gui.SS_Form1.chkPrintCurrOp.visible(True)
+gui.SS_Form1.chkPrintCurrOp.size(1410,660)
+gui.SS_Form1.chkPrintCurrOp.zorder(0)
+gui.SS_Form1.chkPrintCurrOp.position(4900,100)
+gui.SS_Form1.chkPrintCurrOp.enabled(True)
+gui.SS_Form1.chkPrintCurrOp.alignment(0)
+gui.SS_Form1.chkPrintCurrOp.fontname("Arial")
+gui.SS_Form1.chkPrintCurrOp.fontsize(8)
+gui.SS_Form1.chkPrintCurrOp.defaultvalue("1")
+gui.SS_Form1.chkPrintCurrOp.controlgroup(0)
+gui.SS_Form1.ddl_FromBin.create(dropdownlist)
+gui.SS_Form1.ddl_FromBin.visible(True)
+gui.SS_Form1.ddl_FromBin.size(1245,330)
+gui.SS_Form1.ddl_FromBin.zorder(0)
+gui.SS_Form1.ddl_FromBin.position(1100,350)
+gui.SS_Form1.ddl_FromBin.enabled(True)
+gui.SS_Form1.ddl_FromBin.fontname("Arial")
+gui.SS_Form1.ddl_FromBin.fontsize(8)
+gui.SS_Form1.ddl_FromBin.event(click,ddl_frombin_change)
+gui.SS_Form1.ddl_FromBin.defaultvalue("")
+gui.SS_Form1.ddl_FromBin.controlgroup(0)
+gui.SS_Form1.lblFromBin.create(label,"From Bin:",True,1305,255,1,1115,150,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lblFromBin.defaultvalue("")
+gui.SS_Form1.lblFromBin.controlgroup(0)
+gui.SS_Form1.txt_BinQty_Current.create(textbox,"",True,1200,300,0,2375,350,False,0,Arial,8,-2147483643,1)
+gui.SS_Form1.txt_BinQty_Current.defaultvalue("")
+gui.SS_Form1.txt_BinQty_Current.controlgroup(0)
+gui.SS_Form1.lblCurQty.create(label,"Current",True,900,255,1,2375,150,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lblCurQty.defaultvalue("")
+gui.SS_Form1.lblCurQty.controlgroup(0)
+gui.SS_Form1.txtRemaining.create(textbox,"",True,1200,300,0,3630,350,False,0,Arial,8,-2147483643,1)
+gui.SS_Form1.txtRemaining.defaultvalue("")
+gui.SS_Form1.txtRemaining.controlgroup(0)
+gui.SS_Form1.lblRemaining.create(label,"Remaining",True,1200,255,1,3630,150,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lblRemaining.defaultvalue("")
+gui.SS_Form1.lblRemaining.controlgroup(0)
+gui.SS_Form1.lblPcs.create(label,"Pieces:",True,2835,255,1,1105,0,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lblPcs.defaultvalue("")
+gui.SS_Form1.lblPcs.controlgroup(0)
+gui.SS_Form1.txtLblQty.tabstop(True)
+gui.SS_Form1.txtLblQty.tabindex(1)
+gui.SS_Form1.ddl_FromBin.tabstop(True)
+gui.SS_Form1.ddl_FromBin.tabindex(2)
+gui.SS_Form1.chkPrintCurrOp.tabstop(True)
+gui.SS_Form1.chkPrintCurrOp.tabindex(3)
+gui.SS_Form1.lvw1.tabstop(True)
+gui.SS_Form1.lvw1.tabindex(4)
+gui.SS_Form1.cmd_Print.tabstop(True)
+gui.SS_Form1.cmd_Print.tabindex(5)
+gui.SS_Form1.txtSeq.tabstop(True)
+gui.SS_Form1.txtSeq.tabindex(6)
+gui.SS_Form1.txt_BinQty_Current.tabstop(True)
+gui.SS_Form1.txt_BinQty_Current.tabindex(7)
+gui.SS_Form1.txtRemaining.tabstop(True)
+gui.SS_Form1.txtRemaining.tabindex(8)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.Global.sCurrSeq.Declare(String)
+Variable.Global.sCurrJob.Declare(String)
+Variable.Global.sCurrSuffix.Declare(String)
+Variable.Global.sCurrWC.Declare(String)
+Variable.UDT.uLabel.Define("TRMNL",String,TRMNL)
+Variable.UDT.uLabel.Define("JOB",String,JOB)
+Variable.UDT.uLabel.Define("SUFFIX",String,SUFFIX)
+Variable.UDT.uLabel.Define("CUR_SEQ",String,CUR_SEQ)
+Variable.UDT.uLabel.Define("CUR_PART",String,CUR_PART)
+Variable.UDT.uLabel.Define("CUR_DESCR",String,CUR_DESCR)
+Variable.UDT.uLabel.Define("LMO",String,LMO)
+Variable.UDT.uLabel.Define("QTY",Float,QTY)
+Variable.UDT.uLabel.Define("WORKCENTER",String,WORKCENTER)
+Variable.UDT.uLabel.Define("EMPLOYEE",String,EMPLOYEE)
+Variable.UDT.uLabel.Define("QUALITY_NO",String,QUALITY_NO)
+Variable.UDT.uLabel.Define("SCRAP_CODE",String,SCRAP_CODE)
+Variable.UDT.uLabel.Define("SCRAP_CODE_DESC",String,SCRAP_CODE_DESC)
+Variable.UDT.uLabel.Define("SCRAP_QTY",Float,SCRAP_QTY)
+Variable.UDT.uLabel.Define("CLOSE_FLAG",String,CLOSE_FLAG)
+Variable.UDT.uLabel.Define("PART",String,PART)
+Variable.UDT.uLabel.Define("CUSTOMER",String,CUSTOMER)
+Variable.UDT.uLabel.Define("NAME",String,NAME)
+Variable.UDT.uLabel.Define("NEXT_SEQ",String,NEXT_SEQ)
+Variable.UDT.uLabel.Define("NEXT_PART",String,NEXT_PART)
+Variable.UDT.uLabel.Define("NEXT_DESCR",String,NEXT_DESCR)
+Variable.UDT.uLabel.Define("PARENT_JOB",String,PARENT_JOB)
+Variable.UDT.uLabel.Define("PARENT_SUFFIX",String,PARENT_SUFFIX)
+Variable.UDT.uLabel.Define("PARENT_PART",String,PARENT_PART)
+Variable.UDT.uLabel.Define("PARENT_DESCR",String,PARENT_DESCR)
+Variable.UDT.uLabel.Define("TOP_PARENT_JOB",String,TOP_PARENT_JOB)
+Variable.UDT.uLabel.Define("TOP_PARENT_SUFFIX",String,TOP_PARENT_SUFFIX)
+Variable.UDT.uLabel.Define("TOP_PARENT_PART",String,TOP_PARENT_PART)
+Variable.UDT.uLabel.Define("TOP_PARENT_DESCR",String,TOP_PARENT_DESCR)
+Variable.UDT.uLabel.Define("NEXT_SEQ_START",Date,NEXT_SEQ_START)
+Variable.UDT.uLabel.Define("NEXT_SEQ_DUE",Date,NEXT_SEQ_DUE)
+Variable.UDT.uLabel.Define("WO_PRIORITY",String,WO_PRIORITY)
+Variable.UDT.uLabel.Define("PART_DESCR",String,PART_DESCR)
+Variable.UDT.uLabel.Define("WO_QTY",Float,WO_QTY)
+Variable.UDT.uLabel.Define("WO_CUSTOMER_QTY",Float,WO_CUSTOMER_QTY)
+Variable.UDT.uLabel.Define("WO_DUE_DATE",Date,WO_DUE_DATE)
+Variable.UDT.uLabel.Define("QTY_COMPLETED",Float,QTY_COMPLETED)
+Variable.UDT.uLabel.Define("CURRENT_BIN",String,CURRENT_BIN)
+Variable.UDT.uLabel.Define("CURRENT_BIN_QTY",Float,CURRENT_BIN_QTY)
+Variable.uGlobal.uLabel.Declare("uLabel")
+Variable.UDT.uBin.Define("BIN",String,BIN)
+Variable.UDT.uBin.Define("QTY_REMAIN",Float)
+Variable.UDT.uBin.Define("QTY_BIN",Float,QTY_BIN)
+Variable.uGlobal.uBin.Declare("uBin")
+Variable.Global.Printer.Declare(String)
+Variable.Global.ToBin.Declare(String)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+'WIP BIN Labels that print for next sequence/bin, and current(updated qty) sequence/Bin
+'This program is reliant on the user only doing WIP to BIN, NOT Bin to WIP
+'the program will prompt the user when updating pieces to choose which bin they were working from and then
+'update WIP Bin table accordingly.
+'This allows them to Update partials from Barrels keeping track of what is left over.
+
+'Coded BY SFF 6/15/2015 for Universal Tools
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.sJobSuff.Declare(String)
+
+F.ODBC.Connection!Con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+
+'==============================================
+'if called from populate hook, just change the label on the button
+F.Intrinsic.Control.If(V.Caller.Hook,=,"15840")
+	Variable.passed.000048.set("Move Ticket")
+	F.Intrinsic.Control.CallSub(Unload)
+F.Intrinsic.Control.EndIf
+
+'if not called from any of the correct hooks, end
+'script1 button on GUI update job
+F.Intrinsic.Control.If(V.Caller.Hook,<>,"15850")
+'Process button on update job
+F.Intrinsic.Control.andIf(V.Caller.Hook,<>,"15890")
+'Process button on update multiple jobs
+F.Intrinsic.Control.andIf(V.Caller.Hook,<>,"15915")
+	F.Intrinsic.Control.CallSub(Unload)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.CallSub(Checkrules)
+
+'load the grid, before the screen opens
+F.Intrinsic.Control.CallSub(Loadgrid)
+
+'show screen
+Gui.SS_Form1..Show
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3907_WIP_BIN_LABELS.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+Program.Sub.Unload.Start
+F.Intrinsic.Control.SetErrorHandler("Unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'End
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Label("Unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3907_WIP_BIN_LABELS.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Unload.End
+
+program.sub.cmdprnt_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdprnt_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sSql.Declare(String)
+V.Local.sSqlA.Declare(String)
+
+'hide while processing
+Gui.SS_Form1..Visible(false)
+F.Intrinsic.UI.InvokeWaitDialog("Printing Labels...Please Wait","Printing Labels")
+
+'clear values from ATG table
+F.Intrinsic.String.Build("delete from GCG_3907_WIPBIN_LBL where TRMNL='{0}'",V.Caller.Terminal,V.Local.sSql)
+F.ODBC.Connection!Con.Execute(V.Local.sSql)
+
+'next seq currently selected on the screen
+V.uGlobal.uLabel(0)!NEXT_SEQ.set(V.Screen.SS_Form1!txtSeq.Text)
+
+'currnt seq
+F.Intrinsic.String.Build("select PART,DESCRIPTION,UNITS_COMPLETE from V_JOB_OPERATIONS where JOB='{0}' and SUFFIX='{1}' and SEQ='{2}'",V.uGlobal.uLabel(0)!JOB,V.uGlobal.uLabel(0)!SUFFIX,V.uGlobal.uLabel(0)!CUR_SEQ,V.Local.sSql)
+F.ODBC.Connection!Con.OpenRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.Con!rst.EOF,=,False)
+	V.uGlobal.uLabel(0)!CUR_PART.set(V.ODBC.Con!rst.FieldValTrim!PART)
+	V.uGlobal.uLabel(0)!CUR_DESCR.set(V.ODBC.Con!rst.FieldValTrim!DESCRIPTION)
+	V.uGlobal.uLabel(0)!QTY_COMPLETED.set(V.ODBC.Con!rst.FieldValTrim!UNITS_COMPLETE)
+F.Intrinsic.Control.EndIf
+F.ODBC.Con!rst.Close
+
+'"next" seq
+F.Intrinsic.String.Build("select SEQ,PART,DESCRIPTION,LMO,DATE_START,DATE_DUE,UNITS_COMPLETE from V_JOB_OPERATIONS where JOB='{0}' and SUFFIX='{1}' and SEQ='{2}' and LMO <> 'C'  and LMO <> 'M' order by SEQ",V.uGlobal.uLabel(0)!JOB,V.uGlobal.uLabel(0)!SUFFIX,V.uGlobal.uLabel(0)!NEXT_SEQ,V.Local.sSql)
+F.ODBC.Connection!Con.OpenRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.Con!rst.EOF,=,False)
+	V.uGlobal.uLabel(0)!NEXT_PART.set(V.ODBC.Con!rst.FieldValTrim!PART)
+	V.uGlobal.uLabel(0)!NEXT_DESCR.set(V.ODBC.Con!rst.FieldValTrim!DESCRIPTION)
+	V.uGlobal.uLabel(0)!LMO.set(V.ODBC.Con!rst.FieldValTrim!LMO)
+	V.uGlobal.uLabel(0)!NEXT_SEQ_START.set(V.ODBC.Con!rst.FieldValTrim!DATE_START)
+	V.uGlobal.uLabel(0)!NEXT_SEQ_DUE.set(V.ODBC.Con!rst.FieldValTrim!DATE_DUE)
+F.Intrinsic.Control.EndIf
+F.ODBC.Con!rst.Close
+
+'header information
+F.Intrinsic.String.Build("select PART,CUSTOMER,PRIORITY,PART_DESCRIPTION,QTY_ORDER,QTY_CUSTOMER,DATE_DUE, Parent_WO,Parent_Suffix_Parent  from V_JOB_HEADER where JOB='{0}' and SUFFIX='{1}'",V.uGlobal.uLabel(0)!JOB,V.uGlobal.uLabel(0)!SUFFIX,V.Local.sSql)
+F.ODBC.Connection!Con.OpenRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.Con!rst.EOF,=,False)
+	V.uGlobal.uLabel(0)!Parent_Job.set(V.ODBC.Con!rst.FieldValTrim!Parent_WO)
+	V.uGlobal.uLabel(0)!Parent_Suffix.set(V.ODBC.Con!rst.FieldValTrim!Parent_Suffix_Parent)
+	V.uGlobal.uLabel(0)!PART.set(V.ODBC.Con!rst.FieldValTrim!PART)
+	V.uGlobal.uLabel(0)!Parent_Descr.set(V.ODBC.Con!rst.FieldValTrim!PART_DESCRIPTION)
+	V.uGlobal.uLabel(0)!WO_PRIORITY.set(V.ODBC.Con!rst.FieldValTrim!PRIORITY)
+	V.uGlobal.uLabel(0)!CUSTOMER.set(V.ODBC.Con!rst.FieldValTrim!CUSTOMER)
+	V.uGlobal.uLabel(0)!WO_QTY.set(V.ODBC.Con!rst.FieldValTrim!QTY_ORDER)
+	V.uGlobal.uLabel(0)!WO_CUSTOMER_QTY.set(V.ODBC.Con!rst.FieldValTrim!QTY_CUSTOMER)
+	V.uGlobal.uLabel(0)!WO_DUE_DATE.set(V.ODBC.Con!rst.FieldValTrim!DATE_DUE)
+F.Intrinsic.Control.EndIf
+F.ODBC.Con!rst.Close
+
+'customer name
+F.Intrinsic.String.Build("select NAME_CUSTOMER from V_CUSTOMER_MASTER where CUSTOMER='{0}'",V.uGlobal.uLabel(0)!CUSTOMER,V.Local.sSql)
+F.ODBC.Connection!Con.OpenRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.Con!rst.EOF,=,False)
+	V.uGlobal.uLabel(0)!NAME.Set(V.ODBC.Con!rst.FieldValTrim!NAME_CUSTOMER)
+F.Intrinsic.Control.EndIf
+F.ODBC.Con!rst.Close
+
+'Parent Part information
+F.Intrinsic.String.Build("select Part, Part_Description from V_JOB_HEADER where Job='{0}' and Suffix='{1}'",V.uGlobal.uLabel(0)!Parent_Job,V.uGlobal.uLabel(0)!Parent_Suffix,V.Local.sSql)
+F.ODBC.Connection!Con.OpenRecordsetRO("rstA",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.Con!rstA.EOF,=,False)
+	V.uGlobal.uLabel(0)!Parent_Part.set(V.ODBC.Con!rstA.FieldValTrim!Part)
+	V.uGlobal.uLabel(0)!Parent_Descr.set(V.ODBC.Con!rstA.FieldValTrim!Part_Description)
+F.Intrinsic.Control.EndIf
+F.ODBC.Con!rstA.Close
+
+'Top Parent (BOM)
+F.Intrinsic.String.Build("select Job,Suffix,Part, Part_Description from V_JOB_HEADER where Job='{0}' and SUFFIX='000'",V.uGlobal.uLabel(0)!JOB,V.Local.sSql)
+F.ODBC.Connection!Con.OpenRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.Con!rst.EOF,=,False)
+	V.uGlobal.uLabel(0)!Top_Parent_Job.set(V.ODBC.Con!rst.FieldValTrim!Job)
+	V.uGlobal.uLabel(0)!Top_Parent_Suffix.set(V.ODBC.Con!rst.FieldValTrim!Suffix)
+	V.uGlobal.uLabel(0)!Top_Parent_Part.set(V.ODBC.Con!rst.FieldValTrim!Part)
+	V.uGlobal.uLabel(0)!Top_Parent_Descr.set(V.ODBC.Con!rst.FieldValTrim!Part_Description)
+F.Intrinsic.Control.EndIf
+F.ODBC.Con!rst.Close
+
+'scrap reason
+F.Intrinsic.String.Build("select SCRAP_REASON from V_JOBS_IN_PROCESS where JOB='{0}' and SUFFIX='{1}' and SEQUENCE ='{2}' and EMPLOYEE_NAME='{3}' order by sequence_key desc",V.uGlobal.uLabel(0)!JOB,V.uGlobal.uLabel(0)!SUFFIX,V.uGlobal.uLabel(0)!CUR_SEQ,V.uGlobal.uLabel(0)!EMPLOYEE,V.Local.sSql)
+F.ODBC.Connection!Con.OpenRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.Con!rst.EOF,=,False)
+	V.uGlobal.uLabel(0)!SCRAP_CODE.Set(V.ODBC.Con!rst.FieldValTrim!SCRAP_REASON)
+	F.Intrinsic.String.Build("select SCRAP_CODE_DESC from V_RJCT_SCRP_CODES where SCRAP_CODE='{0}'",V.uGlobal.uLabel(0)!SCRAP_CODE,V.Local.sSqlA)
+	F.ODBC.Connection!Con.OpenRecordsetRO("rstA",V.Local.sSqlA)
+	F.Intrinsic.Control.If(V.ODBC.Con!rstA.EOF,=,False)
+		V.uGlobal.uLabel(0)!SCRAP_CODE_DESC.Set(V.ODBC.Con!rstA.FieldValTrim!SCRAP_CODE_DESC)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.Con!rstA.Close
+F.Intrinsic.Control.EndIf
+F.ODBC.Con!rst.Close
+
+'Set Terminal to UDT
+F.Intrinsic.Variable.UDTSetMemberValue(V.uGlobal.uLabel!TRMNL,V.Caller.Terminal)
+
+'Save Report Data
+F.Intrinsic.String.Build("select * from GCG_3907_WIPBIN_LBL where TRMNL='{0}'",V.Caller.Terminal,V.Local.sSql)
+F.ODBC.Connection!Con.OpenRecordsetRW("rst",V.Local.sSql)
+'Save UDT to Recordset
+F.Intrinsic.Variable.SaveUDTToRecordSet("Con","rst","v.uGlobal.uLabel")
+F.ODBC.Con!rst.Close
+
+'Print for Next Sequence/Bin
+F.Intrinsic.Control.CallSub(Printlabel)
+
+'Print for Current Op Updated Bin Qty only if checkbox is checked to print
+F.Intrinsic.Control.If(V.Screen.SS_Form1!chkPrintCurrOp.Value,=,1)
+	F.Intrinsic.Control.CallSub(Printcurropqty)
+F.Intrinsic.Control.EndIf
+'update form bin
+F.Intrinsic.Control.CallSub(Updatewipbin)
+
+F.Intrinsic.ui.CloseWaitDialog
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdprnt_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3907_WIP_BIN_LABELS.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdprnt_click.end
+
+Program.Sub.PrintLabel.Start
+F.Intrinsic.Control.SetErrorHandler("PrintLabel_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.iRptId.Declare(Long)
+V.Local.sParams.Declare(String)
+V.Local.sValues.Declare(String)
+
+F.Global.BI.GetIDFromName("GCG_3907_NEXT_WIP_LABEL.rpt",V.Local.iRptId)
+
+'Move Quantity / Updated Bin Qty
+F.Intrinsic.Control.If(V.uGlobal.uLabel(0)!QTY,<>,0)
+	F.Intrinsic.String.Split("TRMNL*!*Job*!*Suffix*!*Seq*!*Scrapflag*!*LblQty*!*ToBin","*!*",V.Local.sParams)
+	F.Intrinsic.String.Build("{0}*!*{1}*!*{2}*!*{3}*!*{4}*!*{5}*!*{6}",V.Caller.Terminal,V.uGlobal.uLabel(0)!JOB,V.uGlobal.uLabel(0)!SUFFIX,V.uGlobal.uLabel(0)!NEXT_SEQ,"N",V.Screen.SS_Form1!txtLblQty.Text,V.Global.ToBin.Trim,V.Local.sValues)
+	F.Intrinsic.String.Split(V.Local.sValues,"*!*",V.Local.sValues)
+	F.Intrinsic.Control.If(V.Global.Printer.Trim,<>,"")
+		F.Global.BI.PrintReport(V.Local.iRptId,0,V.Local.sParams,V.Local.sValues,V.Global.Printer,False)
+	F.Intrinsic.Control.Else
+		F.Global.BI.PrintReport(V.Local.iRptId,0,V.Local.sParams,V.Local.sValues,"",False)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+'Scrap
+F.Intrinsic.Control.If(V.uGlobal.uLabel(0)!SCRAP_QTY,<>,0)
+	F.Intrinsic.String.Split("TRMNL*!*Job*!*Suffix*!*Seq*!*Scrapflag*!*LblQty","*!*",V.Local.sParams)
+	F.Intrinsic.String.Build("{0}*!*{1}*!*{2}*!*{3}*!*{4}*!*{5}",V.Caller.Terminal,V.uGlobal.uLabel(0)!JOB,V.uGlobal.uLabel(0)!SUFFIX,V.uGlobal.uLabel(0)!NEXT_SEQ,"Y",V.Screen.SS_Form1!txtLblQty.Text,V.Local.sValues)
+	F.Intrinsic.String.Split(V.Local.sValues,"*!*",V.Local.sValues)
+	F.Intrinsic.Control.If(V.Global.Printer.Trim,<>,"")
+		F.Global.BI.PrintReport(V.Local.iRptId,0,V.Local.sParams,V.Local.sValues,V.Global.Printer,False)
+	F.Intrinsic.Control.Else
+		F.Global.BI.PrintReport(V.Local.iRptId,0,V.Local.sParams,V.Local.sValues,"",False)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Endif
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("PrintLabel_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3907_WIP_BIN_LABELS.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.PrintLabel.End
+
+program.sub.lvw1_itemclick.start
+F.Intrinsic.Control.SetErrorHandler("lvw1_itemclick_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sRet.Declare(String)
+V.Local.sOrd.Declare(String)
+V.Local.iOrd.Declare(Long)
+
+'get the item key
+Gui.SS_Form1.lvw1.RetrieveSelectedListItems(V.Local.sOrd)
+
+'get the item ordinal
+Gui.SS_Form1.lvw1.RetrieveItemOrdinal(V.Local.sOrd,V.Local.iOrd)
+
+'get the line of text
+V.Local.sRet.Set(V.Screen.SS_Form1!lvw1.ListItemTextExtended(V.Local.iOrd))
+'split to get trmnl and comment
+F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+'write values to text boxes
+Gui.SS_Form1.txtSeq.Text(V.Local.sRet(0).Trim)
+Gui.SS_Form1.txtWC.Text(V.Local.sRet(1).Trim)
+Gui.SS_Form1.txtDesc.Text(V.Local.sRet(2).Trim)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("lvw1_itemclick_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3907_WIP_BIN_LABELS.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.lvw1_itemclick.end
+
+Program.Sub.LoadGrid.Start
+F.Intrinsic.Control.SetErrorHandler("LoadGrid_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sSql.Declare(String)
+V.Local.sPrct.Declare(String)
+V.Local.fPrct.Declare(Float)
+V.Local.sTotal.declare(String)
+V.Local.bNew.Declare(Boolean)
+V.Local.iOpenQty.Declare(Float)
+V.Local.iRemQty.Declare(Float)
+V.Local.bGrid.Declare(Boolean)
+V.Local.i.Declare(Long)
+
+V.uGlobal.uLabel.Redim(0,0)
+
+'Set Passed Vars in UDT
+V.Global.ToBin.Set(V.Passed.000023)
+V.uGlobal.uLabel(0)!JOB.set(V.Passed.009990)
+V.uGlobal.uLabel(0)!SUFFIX.set(V.Passed.009991)
+V.uGlobal.uLabel(0)!CUR_SEQ.set(V.Passed.009992)
+V.uGlobal.uLabel(0)!QTY.set(V.Passed.000001)
+V.uGlobal.uLabel(0)!WORKCENTER.set(V.Passed.000010)
+V.uGlobal.uLabel(0)!EMPLOYEE.set(V.Passed.009994)
+V.uGlobal.uLabel(0)!SCRAP_QTY.set(V.Passed.000002)
+V.uGlobal.uLabel(0)!CLOSE_FLAG.set(V.Passed.000003)
+V.uGlobal.uLabel(0)!QUALITY_NO.set(V.Passed.010002)
+
+'Get Current BINs and Qty from WIP_BIN and load udt and dropdownlist
+F.Intrinsic.String.Build("Select BIN,QTY_BIN from v_WIP_BIN where JOB = '{0}' and SUFFIX = '{1}' and SEQUENCE = '{2}'",V.uGlobal.uLabel(0)!JOB,V.uGlobal.uLabel(0)!SUFFIX,V.uGlobal.uLabel(0)!CUR_SEQ,V.Local.sSql)
+F.ODBC.Connection!Con.OpenRecordsetRO("rstBIN",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.Con!rstBIN.EOF,<>,True)
+	'Check print updated label automatically if records do exist for qtys in the bin for the current sequence
+	Gui.SS_Form1.chkPrintCurrOp.Value(1)
+	F.Intrinsic.Variable.LoadUDTFromRecordset("Con","rstBIN","v.uGlobal.uBin",False)
+F.Intrinsic.Control.EndIf
+F.ODBC.Con!rstBIN.Close
+
+'Load dropdown Bin List
+F.Intrinsic.Control.If(V.uGlobal.uBin.UBound,<>,-1)
+	F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uBin.LBound,V.uGlobal.uBin.UBound,1)
+		Gui.SS_Form1.ddl_FromBin.AddItem(V.uGlobal.uBin(v.Local.i)!BIN)
+	F.Intrinsic.Control.Next(V.Local.i)
+F.Intrinsic.Control.EndIf
+
+'If only 1 Bin in List Default it to that Bin
+F.Intrinsic.Control.If(V.uGlobal.uBin.UBound,=,0)
+	Gui.SS_Form1.ddl_FromBin.Text(V.uGlobal.uBin(0)!BIN)
+F.Intrinsic.Control.EndIf
+
+'look for sequences and load list view
+F.Intrinsic.String.Build("select Seq, Part, Description from Job_Operations where (LMO='L' or LMO='O') and Job='{0}' and Suffix='{1}' and Seq >'{2}' and seq <'995000'order by Seq",V.Passed.009990,V.Passed.009991,V.Passed.009992,V.Local.sSql)
+V.Local.sPrct.Set(V.Local.sSql)
+F.ODBC.Connection!Con.OpenRecordsetRW("rstX",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.Con!rstX.EOF,<>,True)
+	'Control if records exist, for next action below this control structure to auto select a line
+	V.Local.bGrid.Set(True)
+	F.Intrinsic.Control.DoUntil(V.ODBC.Con!rstX.EOF,=,True)
+		Gui.SS_Form1.lvw1.AddListItem(V.ODBC.Con!rstX.FieldValTrim!Seq,V.ODBC.Con!rstX.FieldValTrim!Seq)
+		Gui.SS_Form1.lvw1.SetListItemSubItemText(V.ODBC.Con!rstX.FieldValTrim!Seq,1,V.ODBC.Con!rstX.FieldValTrim!Part)
+		Gui.SS_Form1.lvw1.SetListItemSubItemText(V.ODBC.Con!rstX.FieldValTrim!Seq,2,V.ODBC.Con!rstX.FieldValTrim!Description)
+	F.ODBC.Con!rstX.MoveNext
+	F.Intrinsic.Control.Loop
+F.Intrinsic.Control.Else
+	'Do Not try to default next sequence(in Main) if nothing was loaded
+	V.Local.bGrid.Set(False)
+F.Intrinsic.Control.EndIf
+F.ODBC.Con!rstX.Close
+
+'set initial selection to first sequence in list
+'bGrid is controlled in load Grid, if there is nothing loaded to grid it will be set to false, else true and load next seq by default
+F.Intrinsic.Control.If(V.Local.bGrid,=,True)
+	gui.SS_Form1.lvw1.SetSelectedItemByOrdinal(1)
+	F.Intrinsic.Control.CallSub(Lvw1_itemclick)
+F.Intrinsic.Control.EndIf
+
+'Set qty to 1
+Gui.SS_Form1.txtLblQty.Text("1")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("LoadGrid_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3907_WIP_BIN_LABELS.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.LoadGrid.End
+
+Program.Sub.PrintCurrOpQty.Start
+F.Intrinsic.Control.SetErrorHandler("PrintCurrOpQty_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Sub for printing updated quantity for current operation, only called if Checkbox(Print Updated quantity for current operation) is checked
+V.Local.sRptLoc.Declare(String)
+V.Local.iRptId.Declare(Long)
+V.Local.sQty.Declare(String)
+V.Local.sScrapFlag.Declare(String)
+V.Local.sParams.Declare(String)
+V.Local.sValues.Declare(String)
+V.Local.sScrapQty.Declare(String)
+V.Local.iFor.Declare(Long)
+V.Local.sLblQty.Declare(String)
+
+F.Global.BI.GetIDFromName("GCG_3907_CURRENT_WIP_LABEL.rpt",V.Local.iRptId)
+
+'Move Quantity / Updated Bin Qty
+F.Intrinsic.Control.If(V.uGlobal.uLabel(0)!CURRENT_BIN_QTY,<>,0)
+	F.Intrinsic.String.Split("TRMNL*!*Job*!*Suffix*!*Seq*!*Scrapflag*!*LblQty","*!*",V.Local.sParams)
+	F.Intrinsic.String.Build("{0}*!*{1}*!*{2}*!*{3}*!*{4}*!*{5}",V.Caller.Terminal,V.uGlobal.uLabel(0)!JOB,V.uGlobal.uLabel(0)!SUFFIX,V.uGlobal.uLabel(0)!CUR_SEQ,"N",V.Screen.SS_Form1!txtLblQty.Text,V.Local.sValues)
+	F.Intrinsic.String.Split(V.Local.sValues,"*!*",V.Local.sValues)
+	F.Intrinsic.Control.If(V.Global.Printer.Trim,<>,"")
+		F.Global.BI.PrintReport(V.Local.iRptId,0,V.Local.sParams,V.Local.sValues,V.Global.Printer,False)
+	F.Intrinsic.Control.Else
+		F.Global.BI.PrintReport(V.Local.iRptId,0,V.Local.sParams,V.Local.sValues,"",False)
+	F.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("PrintCurrOpQty_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3907_WIP_BIN_LABELS.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.PrintCurrOpQty.End
+
+program.sub.ddl_frombin_change.start
+F.Intrinsic.Control.SetErrorHandler("ddl_frombin_change_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Here load the current qty and calculate the remaining based on the good+scrap pieces subtracted from current Bin Qty
+
+V.Local.iRemain.Declare(Float)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.Variable.UDTMultiSeek(V.uGlobal.uBin!BIN,V.Screen.SS_Form1!ddl_FromBin.Text,V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet.Trim,<>,"")
+	'current bin qty - (good+scrap) = Remaining
+	F.Intrinsic.Math.Add(V.uGlobal.uLabel(0)!SCRAP_QTY,V.uGlobal.uLabel!QTY,V.Local.iRemain)
+	F.Intrinsic.Math.Sub(V.uGlobal.uBin(v.Local.sRet.Long)!QTY_BIN,V.Local.iRemain,V.Local.iRemain)
+	Gui.SS_Form1.txtRemaining.Text(V.Local.iRemain)
+	Gui.SS_Form1.txt_BinQty_Current.Text(V.uGlobal.uBin(v.Local.sRet.Long)!QTY_BIN)
+	V.uGlobal.uLabel(0)!CURRENT_BIN.Set(V.Screen.SS_Form1!ddl_FromBin.Text)
+	V.uGlobal.uLabel(0)!CURRENT_BIN_QTY.Set(V.Screen.SS_Form1!txtRemaining.Text)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("ddl_frombin_change_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3907_WIP_BIN_LABELS.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.ddl_frombin_change.end
+
+Program.Sub.CheckRules.Start
+F.Intrinsic.Control.SetErrorHandler("CheckRules_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+
+'verify trmnl is on ATG_3907_MVE_TCKT_SU to be able to print label/comments.  If not an authorzed terminal, end
+F.Intrinsic.String.Build("select * from ATG_3907_MVE_TCKT_SU where TRMNL='{0}'",V.Caller.Terminal,V.Local.sSql)
+F.ODBC.Connection!Con.OpenRecordsetRO("rstX",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.Con!rstX.EOF,=,True)
+	F.Intrinsic.UI.Msgbox("Printer not set up in Move Ticket Printer Maintenance")
+	F.Intrinsic.Control.CallSub(Unload)
+F.Intrinsic.Control.EndIf
+F.ODBC.Con!rstX.Close
+
+'verify there are Qty to print if 0, then end
+F.Intrinsic.Control.If(V.Passed.000001,=,".000000")
+F.Intrinsic.Control.AndIf(V.Passed.000002,=,".000000")
+	F.Intrinsic.Control.CallSub(Unload)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CheckRules_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3907_WIP_BIN_LABELS.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.CheckRules.End
+
+Program.Sub.UpdateWIPBIN.Start
+F.Intrinsic.Control.SetErrorHandler("UpdateWIPBIN_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Update current qty in WIP_BIN for the JOB-SUFFIX-SEQUENCE-BIN that was pulled from
+
+V.Local.sSql.Declare(String)
+V.Local.iRet.Declare(Float)
+
+F.Intrinsic.String.Build("Select * from WIP_BIN where JOB = '{0}' and SUFFIX = '{1}' and SEQUENCE = '{2}' and BIN = '{3}'",V.uGlobal.uLabel(0)!JOB,V.uGlobal.uLabel(0)!SUFFIX,V.uGlobal.uLabel(0)!CUR_SEQ,V.uGlobal.uLabel(0)!CURRENT_BIN,V.Local.sSql)
+F.ODBC.Connection!Con.OpenRecordsetRW("rst",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.Con!rst.EOF,<>,True)
+	F.Intrinsic.Math.ConvertToFloat(V.Screen.SS_Form1!txtRemaining.Text,V.Local.iRet)
+	F.ODBC.Con!rst.Set!QTY_BIN(V.Local.iRet)
+	F.ODBC.Con!rst.Update
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("UpdateWIPBIN_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3907_WIP_BIN_LABELS.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.UpdateWIPBIN.End
+
+Program.Sub.Comments.Start
+${$0$}$ATG_Print_Report_WIP_Operation_Labe$}$JCT$}$6/26/2012
+${$1$}$$}$$}$2$}$15915$}$OLS003M-PB-PROCESS-PRE-HOOK (On-line GUI)$}$6/26/2012 8:57:48 AM$}$(Program: OLG002; Screen: OLS003M)
+
+${$1$}$$}$$}$1$}$15890$}$OLS003-PB-PROCESS-POST-HOOK (On-line GUI)$}$6/26/2012 8:56:45 AM$}$(Program: OLG002; Screen: OLS003)
+
+${$1$}$$}$$}$0$}$15850$}$OLS003-PB-SCRIPT-1-HOOK (On-line GUI)$}$6/26/2012 8:56:05 AM$}$(Program: OLG002; Screen: OLS003)
+
+${$2$}$$}$$}$0$}$4$}$WIP_Operation_Label_ATG.rpt$}$6/26/2012 8:59:15 AM$}$Label report
+${$4$}$0$}$$}$0$}$-1$}$JCT$}$8/26/2011 8:54:37 AM$}$modified to accept/create custom BI report ID
+
+${$4$}$0$}$$}$1$}$-1$}$JCT$}$6/26/2012 8:55:24 AM$}$cusomt version for TC Millwork to add ability to specify the "next" sequence to print, and the number of labels
+Program.Sub.Comments.End
+Program.Sub.ScreenSS.Start
+SS_Form1{{CAPTION::WIP Opertion Label Var2
+SS_Form1.CTRL{{NAME::txtLblQty\\TYPE::2\\CAPTION::# of Labels\\GROUP::1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::txtSeq\\TYPE::2\\CAPTION::Sequence\\RANGE::lvw1\\GROUP::2\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::txtWC\\TYPE::2\\CAPTION::Workcenter\\RANGE::lvw1\\GROUP::2\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::txtDesc\\TYPE::2\\CAPTION::Description\\RANGE::lvw1\\GROUP::2\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::lvw1\\TYPE::7\\CAPTION::Click a line to select a sequence\\GROUP::3\\BROWSER::0\\SIZE::1
+
+Program.Sub.ScreenSS.End
+
